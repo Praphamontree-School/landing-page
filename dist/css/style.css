@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+    --cyan: deepskyblue;
+    --pink: pink;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+}
+
+* {
+    font-family: "Open Sans", "Kanit", sans-serif;
+    box-sizing: border-box;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 72px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 32px;
+    border-bottom: 1px solid transparent;
+    z-index: 10;
+    transition: .12s ease-in-out;
+}
+
+header img {
+    height: 52px;
+}
+
+header > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+}
+
+header .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+}
+
+header .nav a {
+    font-weight: 600;
+}
+
+header.scrolled {
+    background-color: #fff;
+    border-bottom: 1px solid rgb(0,0,0,0.1);
+}
+
+.max-width {
+    width: 100%;
+    max-width: 1280px;
+}
+
+.btn, .btn-large, .btn-small {
+    border-radius: 48px !important;
+    background-color: var(--cyan) !important;
+    font-weight: 600 !important;
+}
+
+.dropdown-content li>a, .dropdown-content li>span {
+    color: var(--cyan) !important;
+}
+
+.dropdown-content {
+    border-radius: 12px !important;
+}
+
+.hero-section {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: start;
+    padding: 24vh;
+    background: linear-gradient(0deg, #fff, transparent, transparent), var(--img) no-repeat center center;
+    background-size: cover;
+}
+
+.hero-section h1 {
+    color: #fff;
+    text-shadow: 0px 6px 8px rgb(0, 0, 0, 0.32);
+}
+
+.hero-section span {
+    max-width: 720px;
+    font-size: 18px;
+    text-shadow: 0px 2px 12px rgb(255, 255, 255, 0.64);
+}
+
+.secondary-section {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 24vh;
+    background: linear-gradient(0deg, #fff, transparent, transparent), var(--img) no-repeat center center;
+    background-size: cover;
+}
+
+.dp-width-lg { width: 320px !important }
+.tabs-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+}
+
+section#courses {
+    --default-background-color: 16, 121, 190;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 16vh;
+    gap: 64px;
+    background: url(/assets/png/ade45267-5989-43f5-822f-3f1fbe9a7e03.png), linear-gradient(0deg, #fff, transparent, transparent, transparent, #fff), rgb(var(--default-background-color), 0.64);
+}
+section#courses > .tabs-selector {
+    width: max-content;
+    padding: 6px;
+    background-color: #fff;
+    border-radius: 48px;
+}
+section#courses > .tabs-selector > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+}
+section#courses > .tabs-selector > ul > li {
+    transition: .12s ease-in-out;
+    padding: 8px 12px;
+    -webkit-user-select: none;
+    user-select: none;
+}
+section#courses > div:not(.tabs-selector) { position: absolute; margin-top: 92px; transition: .32s ease-in-out }
+section#courses > .tabs-selector > ul > li:active { transform: scale(.94); transition-duration: .04s }
+section#courses[active="kindergarten"] > .tabs-selector > ul > li[tabName="kindergarten"],
+section#courses[active="primary"] > .tabs-selector > ul > li[tabName="primary"],
+section#courses[active="secondary"] > .tabs-selector > ul > li[tabName="secondary"] {
+    background-color: rgb(var(--default-background-color));
+    border-radius: 48px;
+    color: #fff;
+}
+section#courses[active="primary"] { --default-background-color: 234, 10, 139 }
+section#courses:not([active="kindergarten"]) > div#kindergarten,
+section#courses:not([active="primary"]) > div#primary,
+section#courses:not([active="secondary"]) > div#secondary { opacity: 0 }
+
+section.center-title > h1 { margin: 0 auto }

@@ -4,9 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Praphamontree School</title>
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="/dist/css/style.css">
+    <script src="/dist/js/jquery-3.7.1.min.js"></script>
+
+    <!-- materializecss Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- materializecss Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-    
+    <header>
+        <div class="max-width">
+            <a href="/"><img src="/assets/favicon.png" height="52px" alt="Praphamontree School"></a>
+            <div class="nav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#courses">Courses</a>
+                <a href="#contactus">Contact Us</a>
+            </div>
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-trigger waves-effect waves-light btn' href='#' data-target='dp-contactus'>Contact Us</a>
+
+            <!-- Dropdown Structure -->
+            <ul id='dp-contactus' class='dropdown-content'>
+                <li class="waves-effect"><a href="https://www.facebook.com/praphamontree1" target="_blank">PPM I</a></li>
+                <li class="waves-effect"><a href="https://www.facebook.com/ppm2.ac.th" target="_blank">PPM II</a></li>
+                <li class="waves-effect"><a href="https://www.facebook.com/ppm3.ac.th" target="_blank">PPM III</a></li>
+            </ul>
+        </div>
+    </header>
+    <section class="hero-section" id="home" style="--img: url(/assets/jpg/118874948_3250127191730180_5654822221808243590_n.jpg)">
+        <h1>โรงเรียนประภามนตรี</h1>
+        <span>✨ มุ่งมั่นพัฒนาเด็กไทยให้เป็นเลิศด้านวิชาการ คุณธรรม และคุณวุฒิ หล่อหลอมให้นักเรียนเป็นผู้ที่มีความรู้ ความสามารถ  มีจิตสำนึกที่ดี และมีคุณลักษณะอันพึงประสงค์ พร้อมก้าวสู่สังคมโลก</span>
+        <a class='dropdown-trigger waves-effect waves-light btn' href='#' data-target='dp-ppmschools' style='margin-top: 32px'>โรงเรียนในเครือ</a>
+        <ul id='dp-ppmschools' class='dropdown-content dp-width-lg'>
+            <li class="waves-effect"><a href="/bangna">โรงเรียนประภามนตรี 1 (บางนา)</a></li>
+            <li class="waves-effect"><a href="/ppm2">โรงเรียนประภามนตรี 2</a></li>
+            <li class="waves-effect"><a href="/bangphli">โรงเรียนประภามนตรี 3 (บางพลี)</a></li>
+        </ul>
+    </section>
+    <section class="secondary-section" id="about">
+        <h1>About</h1>
+    </section>
+    <section class="secondary-section courses" active="kindergarten" id="courses">
+        <div class="tabs-selector">
+            <ul>
+                <li tabName="kindergarten">อนุบาล</li>
+                <li tabName="primary">ประถม</li>
+                <li tabName="secondary">มัธยม</li>
+            </ul>
+        </div>
+        <div id="kindergarten">
+            อนุบาล
+        </div>
+        <div id="primary">
+            ประถม
+        </div>
+        <div id="secondary">
+            มัธยม
+        </div>
+    </section>
+    <section class="secondary-section center-title">
+        <h1>“นักเรียนแห่งแรงบันดาลใจ”</h1>
+    </section>
+    <section class="secondary-section" id="contactus">
+        <h1>Contact Us</h1>
+    </section>
+    <footer>
+
+    </footer>
+    <script>
+        $(document).ready(function(){
+            const header = document.querySelector('header');
+            const courses = document.querySelector('section.secondary-section#courses');
+            const courses_selector = courses.querySelectorAll('div.tabs-selector>ul>li');
+            document.addEventListener('scroll', function(e) {
+                if ( !e ) return false;
+                if ( window.scrollY > 128 ) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            for ( var i = 0; i < courses_selector.length; i++ ) {
+                courses_selector[i].addEventListener('click', function(e) {courses.setAttribute('active', e.srcElement.getAttribute('tabName'))})
+            }
+            $('.dropdown-trigger').dropdown();
+        });
+    </script>
 </body>
 </html>
