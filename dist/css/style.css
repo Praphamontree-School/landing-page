@@ -170,3 +170,5 @@ section#courses:not([active="primary"]) > div#primary,
 section#courses:not([active="secondary"]) > div#secondary { opacity: 0 }
 
 section.center-title > h1 { margin: 0 auto }
+section.center-title > h2 { text-align: start; margin-right: auto; font-weight: 700 }
+section.center-title > h3 { text-align: end; margin-left: auto; font-weight: 700 }
