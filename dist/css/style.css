@@ -3,6 +3,8 @@
 :root {
     --cyan: deepskyblue;
     --pink: pink;
+    --foreground: 0, 0, 0;
+    --background: 255, 255, 255;
 }
 
 html {
@@ -105,7 +107,7 @@ header.scrolled {
 
 .secondary-section {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -126,7 +128,7 @@ header.scrolled {
 section#courses {
     --default-background-color: 16, 121, 190;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -156,7 +158,15 @@ section#courses > .tabs-selector > ul > li {
     -webkit-user-select: none;
     user-select: none;
 }
-section#courses > div:not(.tabs-selector) { position: absolute; margin-top: 92px; transition: .32s ease-in-out }
+section#courses > div:not(.tabs-selector) {
+    width: 100%;
+    max-width: 720px;
+    transition: .32s ease-in-out;
+}
+
+section#courses ul.numberic-ordering > li > li-marker { font-size: 6.4em; background-image: linear-gradient(rgb(var(--background)), rgb(var(--background), .48)) }
+section#courses ul.numberic-ordering > li.right > li-marker { transform: translateX(50%) translateY(-70%);right: 0 }
+
 section#courses > .tabs-selector > ul > li:active { transform: scale(.94); transition-duration: .04s }
 section#courses[active="kindergarten"] > .tabs-selector > ul > li[tabName="kindergarten"],
 section#courses[active="primary"] > .tabs-selector > ul > li[tabName="primary"],
@@ -168,9 +178,111 @@ section#courses[active="secondary"] > .tabs-selector > ul > li[tabName="secondar
 section#courses[active="primary"] { --default-background-color: 234, 10, 139 }
 section#courses:not([active="kindergarten"]) > div#kindergarten,
 section#courses:not([active="primary"]) > div#primary,
-section#courses:not([active="secondary"]) > div#secondary { opacity: 0 }
+section#courses:not([active="secondary"]) > div#secondary { position: absolute; margin-top: 119px; opacity: 0; pointer-events: none; transition: opacity .24 ease-in-out; }
 
 section.center-title > h1 { margin: 0 auto; text-align: center }
+section.center-content { align-items: center }
+
+strong.gradient { 
+    background: linear-gradient(45deg, var(--cyan), var(--pink));background-size: cover;
+    -webkit-background-clip: text;-webkit-text-fill-color: transparent;
+}
+
+iframe, img { border-radius: 24px; }
+
+ul.numberic-ordering > li { position: relative; margin-left: 12px; }
+ul.numberic-ordering > li > li-marker {
+    position: absolute;
+    margin-left: -12px;
+    text-align: end;
+    font-size: 8em;
+    font-weight: 700;
+    transform: translateX(-50%) translateY(-20%);
+    background: linear-gradient(var(--cyan), transparent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+}
+ul.numberic-ordering > li.floating-marker { margin-top: 128px }
+ul.numberic-ordering > li.floating-marker > li-marker { transform: translateX(-50%) translateY(-70%) }
+ul.numberic-ordering > li:nth-child(even) > li-marker {
+    background: linear-gradient(var(--pink), transparent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+}
+ul.left-right-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+ul.left-right-content > li.left,
+ul.left-right-content > li.right { max-width: 720px; margin-bottom: 64px }
+ul.left-right-content > li.right { margin-left: auto }
+ul.numberic-ordering > li > h1 { margin-top: 7px }
+ul.left-right-content > li > h2.emoji {}
+ul.left-right-content > li > h1 {
+    width: 100%;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+footer {
+    width: 100vw;
+    minheight: 240px;
+    padding: 32px;
+    background-color: rgb(var(--foreground), 0.06);
+    display: flex !important;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+footer > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+footer ul { max-width: 320px; display: flex; flex-direction: column; gap: 12px }
+
+footer h1 { margin: 0; font-size: 16px; font-weight: 700 }
+footer a { font-size: 16px }
+
+footer > div > div.links {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+footer > div > div.copyright {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+footer > div > div.copyright > span { font-size: 14px; color: rgb(var(--foreground), 0.32); }
+
+footer > div > div.copyright > div.social {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+}
+
+footer > div > div.copyright > div.social > a {
+    color: rgb(var(--foreground), 1);
+    font-size: 22px;
+}
 
 @media (min-width: 720px) {
     section.center-title > h2 { text-align: start; margin-right: auto; font-size: 72px; font-weight: 700 }
