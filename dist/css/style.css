@@ -184,6 +184,17 @@ section#courses:not([active="primary"]) > div#primary,
 section#courses:not([active="secondary"]) > div#secondary,
 section#courses:not([active="highschool"]) > div#highschool { position: absolute; margin-top: 119px; opacity: 0; pointer-events: none; transition: opacity .24 ease-in-out; }
 
+section#courses > div:not(.tabs-selector) > img {
+    max-width: 640px;
+    margin: auto auto;
+    margin-bottom: -128px;
+    mask-image: -webkit-gradient(linear, center top, center bottom,
+            color-stop(0.7,  rgba(0,0,0,1)),
+            color-stop(1.00,  rgba(0,0,0,0))
+        );
+    display: block;
+}
+
 section.center-title > h1 { margin: 0 auto; text-align: center }
 section.center-content { align-items: center }
 
