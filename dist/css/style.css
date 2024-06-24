@@ -168,17 +168,21 @@ section#courses ul.numberic-ordering > li > li-marker { font-size: 6.4em; backgr
 section#courses ul.numberic-ordering > li.right > li-marker { transform: translateX(50%) translateY(-70%);right: 0 }
 
 section#courses > .tabs-selector > ul > li:active { transform: scale(.94); transition-duration: .04s }
+section#courses[active="pre-kindergarten"] > .tabs-selector > ul > li[tabName="pre-kindergarten"],
 section#courses[active="kindergarten"] > .tabs-selector > ul > li[tabName="kindergarten"],
 section#courses[active="primary"] > .tabs-selector > ul > li[tabName="primary"],
-section#courses[active="secondary"] > .tabs-selector > ul > li[tabName="secondary"] {
+section#courses[active="secondary"] > .tabs-selector > ul > li[tabName="secondary"],
+section#courses[active="highschool"] > .tabs-selector > ul > li[tabName="highschool"] {
     background-color: rgb(var(--default-background-color));
     border-radius: 48px;
     color: #fff;
 }
 section#courses[active="primary"] { --default-background-color: 234, 10, 139 }
+section#courses:not([active="pre-kindergarten"]) > div#pre-kindergarten,
 section#courses:not([active="kindergarten"]) > div#kindergarten,
 section#courses:not([active="primary"]) > div#primary,
-section#courses:not([active="secondary"]) > div#secondary { position: absolute; margin-top: 119px; opacity: 0; pointer-events: none; transition: opacity .24 ease-in-out; }
+section#courses:not([active="secondary"]) > div#secondary,
+section#courses:not([active="highschool"]) > div#highschool { position: absolute; margin-top: 119px; opacity: 0; pointer-events: none; transition: opacity .24 ease-in-out; }
 
 section.center-title > h1 { margin: 0 auto; text-align: center }
 section.center-content { align-items: center }
@@ -204,8 +208,9 @@ ul.numberic-ordering > li > li-marker {
     -webkit-user-select: none;
     user-select: none;
 }
+ul.numberic-ordering > li.not-floating > li-marker { position: relative }
 ul.numberic-ordering > li.floating-marker { margin-top: 128px }
-ul.numberic-ordering > li.floating-marker > li-marker { transform: translateX(-50%) translateY(-70%) }
+ul.numberic-ordering > li.floating-marker:not(.center) > li-marker { transform: translateX(-50%) translateY(-70%) }
 ul.numberic-ordering > li:nth-child(even) > li-marker {
     background: linear-gradient(var(--pink), transparent);
     -webkit-background-clip: text;
